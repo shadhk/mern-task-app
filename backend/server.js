@@ -4,12 +4,14 @@ const app = express()
 const PORT = process.env.PORT || 5000
 const connectDB = require("./config/connectDB")
 const mongoose = require("mongoose")
+const cors = require("cors")
 const Task = require("./models/taskModel")
 const taskRoutes = require("./routes/taskRoute")
 
 //middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 app.use("/api/tasks", taskRoutes)
 
 //Routes
